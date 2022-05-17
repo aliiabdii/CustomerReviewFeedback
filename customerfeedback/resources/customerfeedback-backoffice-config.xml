@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<config xmlns="http://www.hybris.com/cockpit/config"
+		xmlns:y="http://www.hybris.com/cockpit/config/hybris"
+		xmlns:na="http://www.hybris.com/cockpitng/config/notifications"
+		xmlns:wz="http://www.hybris.com/cockpitng/config/wizard-config"
+		xmlns:df="http://www.hybris.com/cockpitng/component/dynamicForms"
+		xmlns:et="http://www.hybris.com/cockpitng/config/explorertree"
+		xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea"
+		xmlns:ss="http://www.hybris.com/cockpitng/config/simplesearch">
+
+	<context merge-by="module" parent="auto" component="explorer-tree">
+		<explorer-tree:explorer-tree xmlns:explorer-tree="http://www.hybris.com/cockpitng/config/explorertree">
+			<explorer-tree:navigation-node id="hmc.b2bcommercegroup">
+				<explorer-tree:type-node code="CustomerFeedbackReview" id="CustomerFeedbackReview"/>
+			</explorer-tree:navigation-node>
+		</explorer-tree:explorer-tree>
+	</context>
+
+	<context merge-by="type" parent="GenericItem" type="CustomerFeedbackReview" component="listview">
+		<list-view:list-view xmlns:list-view="http://www.hybris.com/cockpitng/component/listView">
+			<list-view:column qualifier="user"/>
+			<list-view:column qualifier="title"/>
+			<list-view:column qualifier="language"/>
+			<list-view:column qualifier="approved"/>
+		</list-view:list-view>
+	</context>
+
+	<context merge-by="type" parent="GenericItem" type="CustomerFeedbackReview" component="editor-area">
+		<editorArea:editorArea xmlns:editorArea="http://www.hybris.com/cockpitng/component/editorArea">
+			<editorArea:essentials>
+				<editorArea:essentialSection name="hmc.essential">
+					<editorArea:attribute xmlns="http://www.hybris.com/cockpitng/component/editorArea" qualifier="user"/>
+					<editorArea:attribute xmlns="http://www.hybris.com/cockpitng/component/editorArea" qualifier="title"/>
+				</editorArea:essentialSection>
+			</editorArea:essentials>
+			<editorArea:tab name="hmc.customerfeedbackreview.tabs.primary">
+				<editorArea:section name="hmc.customerfeedbackreview.sections.primary">
+					<editorArea:attribute xmlns="http://www.hybris.com/cockpitng/component/editorArea" qualifier="content">
+						<editor-parameter>
+							<name>rows</name>
+							<value>10</value>
+						</editor-parameter>
+					</editorArea:attribute>
+					<editorArea:attribute xmlns="http://www.hybris.com/cockpitng/component/editorArea" qualifier="language"/>
+					<editorArea:attribute xmlns="http://www.hybris.com/cockpitng/component/editorArea" qualifier="approved"/>
+				</editorArea:section>
+			</editorArea:tab>
+			<editorArea:tab name="hmc.customerfeedbackreview.tabs.administration">
+				<editorArea:section name="hmc.customerfeedbackreview.sections.general">
+					<editorArea:attribute xmlns="http://www.hybris.com/cockpitng/component/editorArea" qualifier="pk"/>
+					<editorArea:attribute xmlns="http://www.hybris.com/cockpitng/component/editorArea" qualifier="creationtime"/>
+				</editorArea:section>
+			</editorArea:tab>
+		</editorArea:editorArea>
+	</context>
+
+
+	<context merge-by="type" parent="GenericItem" type="CustomerFeedbackReview" component="advanced-search">
+		<advanced-search:advanced-search xmlns:advanced-search="http://www.hybris.com/cockpitng/config/advancedsearch">
+			<advanced-search:field-list>
+				<advanced-search:field xmlns="http://www.hybris.com/cockpitng/config/advancedsearch" name="user" selected="true"/>
+				<advanced-search:field xmlns="http://www.hybris.com/cockpitng/config/advancedsearch" name="approved" selected="true"/>
+				<advanced-search:field xmlns="http://www.hybris.com/cockpitng/config/advancedsearch" name="title" selected="true"/>
+				<advanced-search:field xmlns="http://www.hybris.com/cockpitng/config/advancedsearch" name="content" selected="false"/>
+				<advanced-search:field xmlns="http://www.hybris.com/cockpitng/config/advancedsearch" name="language" selected="true"/>
+				<advanced-search:field xmlns="http://www.hybris.com/cockpitng/config/advancedsearch" name="creationtime" selected="true"/>
+				<advanced-search:field xmlns="http://www.hybris.com/cockpitng/config/advancedsearch" name="itemtype" selected="false"/>
+				<advanced-search:field xmlns="http://www.hybris.com/cockpitng/config/advancedsearch" name="modifiedtime" selected="false"/>
+				<advanced-search:field xmlns="http://www.hybris.com/cockpitng/config/advancedsearch" name="owner" selected="false"/>
+				<advanced-search:field xmlns="http://www.hybris.com/cockpitng/config/advancedsearch" editor="java.lang.Long" name="pk" selected="false"/>
+			</advanced-search:field-list>
+		</advanced-search:advanced-search>
+	</context>
+
+</config>

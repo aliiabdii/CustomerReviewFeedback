@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ [y] hybris Platform
+
+ Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
+
+ This software is the confidential and proprietary information of SAP
+ ("Confidential Information"). You shall not disclose such Confidential
+ Information and shall use it only in accordance with the terms of the
+ license agreement you entered into with SAP.
+-->
+
+<items 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+			xsi:noNamespaceSchemaLocation="items.xsd">
+
+	<relations>
+		<relation localized="false" code="CustomerFeedbackReviewToUserRel" autocreate="true">
+			<sourceElement type="User" qualifier="user" cardinality="one">
+				<modifiers optional="false"/>
+			</sourceElement>
+			<targetElement type="CustomerFeedbackReview" qualifier="customerFeedbackReviews" cardinality="many">
+				<modifiers write="false" initial="true" />
+			</targetElement>
+		</relation>
+	</relations>
+
+	<itemtypes>
+		<itemtype generate="true"
+		   code="CustomerFeedbackReview"
+		   jaloclass="org.customer.feedback.jalo.CustomerFeedbackReview"
+		   autocreate="true"
+	   >
+			<deployment table="CustomerFeedbackReview" typecode="30001"/>
+			<attributes>
+				<attribute qualifier="title" type="java.lang.String">
+					<description>Title of the review</description>
+					<modifiers initial="true" optional="false"/>
+					<persistence type="property"/>
+				</attribute>
+
+				<attribute qualifier="content" type="java.lang.String">
+					<description>Content of the review</description>
+					<modifiers initial="true" optional="false"/>
+					<persistence type="property">
+						<columntype>
+							<value>HYBRIS.LONG_STRING</value>
+						</columntype>
+					</persistence>
+				</attribute>
+
+				<attribute qualifier="language" type="Language">
+					<description>Language of the review.</description>
+					<modifiers initial="true" optional="false"/>
+					<persistence type="property" />
+				</attribute>
+
+				<attribute qualifier="approved" type="java.lang.Boolean">
+					<description>Review is approved</description>
+					<modifiers optional="false" />
+					<defaultvalue>java.lang.Boolean.FALSE</defaultvalue>
+					<persistence type="property" />
+				</attribute>
+
+			</attributes>
+		</itemtype>
+
+	</itemtypes>
+</items>
